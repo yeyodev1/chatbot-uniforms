@@ -1,49 +1,42 @@
 const { addKeyword } = require("@bot-whatsapp/bot");
 
-const GoogleSheetService = require("../services/inventory");
+const GoogleSheetService = require("../services/sheets");
 
 const googleSheet = new GoogleSheetService(
   "1qzZWNa0mh-jnuOptoUWPN8DgE50smFEndvrt_a1mpQ4"
 );
 
-const GLOBAL_STATE = [];
+const flowShowUniforms = addKeyword("1")
+	.addAnswer("Te envío el catalogo")
+	.addAnswer("Mira lo siguiente", {
+		media: "http://bibliotecadigital.ilce.edu.mx/Colecciones/ObrasClasicas/_docs/ElPrincipito.pdf",
+	})
+	.addAnswer(
+		["Por favor proporciona el codigo al lado del nombre de la prenda"],
+		{ capture: true },
+		async (ctx, { fallBack }) => {
+			const formatCode = /^[A-Za-z]-\d+$/;
+			const targetCode = ctx.body;
+			if (!formatCode.test(targetCode)) {
+				fallBack(
+					"El codigo proporcionado esta mal escrito, por favor resísalo y escríbelo tal como dice el catálogo 😄"
+				);
+				return;
+			}
+			try {
+				const getProduct = await googleSheet.showUniformData(
+					targetCode
+				);
+				console.log(getProduct);
+				if (getProduct === null) {
+					fallBack();
+				}
+				return getProduct;
+			} catch (error) {
+				console.log(error);
+			}
+		}
+	);
 
-const flowWhatInstitution = addKeyword("2").addAnswer(
-  ["Encantado de mostrarte lo que tenemos en stock!", 'Dime de que institucion necesitas'],
-  null,
-  async (_, { flowDynamic }) => {
-    try{
-    const getList = await googleSheet.retriveStockList();
-    for (const stockList of getList) {
-      GLOBAL_STATE.push(stockList);
-      await flowDynamic(stockList);
-    }
-  }
-  catch(error){
-    console.log(error)
-  }
-});
 
-
-const flowShowUniforms = addKeyword("1").addAnswer(
-  [
-  "Encantado de mostrarte los uniformes disponibles",
-],
-  {capture: true},
-  async (ctx, { fallBack }) => {
-    const nameUniform = ctx.body
-    try{
-    const getProduct = await googleSheet.showStockList(nameUniform);
-    if(getProduct===null){
-      fallBack()
-    } 
-    return getProduct
-    console.log(getProduct)
-  }
-  catch(error){
-    console.log(error)
-  }
-});
-
-module.exports = flowWhatInstitution 
 module.exports = flowShowUniforms 
