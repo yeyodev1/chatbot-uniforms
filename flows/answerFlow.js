@@ -1,15 +1,15 @@
 const { addKeyword } = require("@bot-whatsapp/bot");
 
-const GoogleSheetService = require("../services/index");
+const GoogleSheetService = require("../services/inventory");
 
 const googleSheet = new GoogleSheetService(
-  "16-36L83cctMUzjJ8IJh1INEEstmRNKqbpG5_aJhQFs8"
+  "1qzZWNa0mh-jnuOptoUWPN8DgE50smFEndvrt_a1mpQ4"
 );
 
 const GLOBAL_STATE = [];
 
-const flowVenta = addKeyword("1").addAnswer(
-  "Encantado de mostrarte lo que tenemos en stock!",
+const flowWhatInstitution = addKeyword("2").addAnswer(
+  ["Encantado de mostrarte lo que tenemos en stock!", 'Dime de que institucion necesitas'],
   null,
   async (_, { flowDynamic }) => {
     try{
@@ -25,17 +25,15 @@ const flowVenta = addKeyword("1").addAnswer(
 });
 
 
-const flowPedidos3D = addKeyword("2").addAnswer(
+const flowShowUniforms = addKeyword("1").addAnswer(
   [
-  "Encantado de mostrarte como va el pedido de las impresiones 3D!",
-  "",
-  "Cual es tu numero de pedido? ✌🏻😎"
+  "Encantado de mostrarte los uniformes disponibles",
 ],
   {capture: true},
-  async (ctx, { flowDynamic, fallBack }) => {
-    const targetCode = ctx.body
+  async (ctx, { fallBack }) => {
+    const nameUniform = ctx.body
     try{
-    const getProduct = await googleSheet.retrive3DList(targetCode);
+    const getProduct = await googleSheet.showStockList(nameUniform);
     if(getProduct===null){
       fallBack()
     } 
@@ -47,5 +45,5 @@ const flowPedidos3D = addKeyword("2").addAnswer(
   }
 });
 
-module.exports = flowVenta 
-module.exports = flowPedidos3D 
+module.exports = flowWhatInstitution 
+module.exports = flowShowUniforms 

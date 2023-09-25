@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "just-sunrise-399716",
+  "private_key_id": "a95fc6a40879e9d8eccdc01de8ec3c32a3ff9ba6",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDTCM7OhRuYTdGc\n7RSK+7uEl+1ZDQ0zzLi+1YvDSMFu/rHNEElezFEtp6b4GR/puiqhbuXdk+B5Io9Y\nsvLqJ+DWD57hKqf23D2JGXJE9h078l+QsWVn6u3+Mpzf+/Ri6lUByIar9m1XxybQ\n/DupTKs2RUQgg8ge6rhpb7J5VN+r9aeUF6tOTj8DkCdF9INTbWGg+7U1LQSp+h3g\nJJn1nRppstiaRj/eCvRGKMNPdWc8p5Q/7+/yzkuifS3OiJPOwcTX+hYpcN/1vpna\nNUY6+tyZ2haWUKVL4aWsDjVPCwWR+LZA+Jn6nfoObwpt5FEdx2ENCL7cnlwuVv0W\nwViTdaAZAgMBAAECggEABvu4TDaKDo9/VjVfg/yHMgC3sUYF9SbbHjAsKyQnMn2/\nHc1iKtQ8A3S+yQrxIWeFrZ3hLA85UwjaZtGqdCZ/AYEMKDX5z5NuKIaXtMHS1H8A\nETutjV4azgSYEwQKtuiQ3jmSgJzroAdOY4VVPBRLaMUArMrE6TD/NTilq++BD0xG\n+y8M1EX631ZwyFnuD+KZSm+HQlGvqKjy1rG57LmmUmOMhSsRRJROzLXuKFM8QzuR\nwIX8WXdB3C1RVgQtoB+VcQyxLCAbP5BJsI4NL9sjb+prGAl2vycgmWi6BQZBBiQz\nH2WNLJGaM4UHNqj9gB7YUYZgHco6jDL5M+3wDIeS2QKBgQD32OZPEGRCDtrnUE2+\nTSLaHCs61Fr/uyoHJuGPwwcMwaTXE5osEj9E47FCthdsTFdyjmeD6D8+TLjjVf43\nnfNkdF4wUkQnDWYade5hpshmqNwMucSGLIDI3F1mw1zqEh0ZyhwzammVMSzXBLaf\n9vvSz879xw8s07QD41NgaY7/rwKBgQDZ+ekJYCFVfczEE4z8r1UDvL/oupSPUb3P\nyBGfvxwbgKSaRSqmDlgnMrDFCPOrotET6R+nDLrjECN+GIJgFwIhq/56ewcFmNaU\nObuNPJHEWyvMqRe3K5dZj43GjEcCWTsUDVPzuxTTEICZcDy0PzqflmK4A7uv+PO1\nQgLdqp1GtwKBgHwTqNDCCv8LAsm0aQcxBJaebYHpF5lY8KRd8aQP5bKcKtLFbHRN\nukDZoD8ee8FqwoiGBAqENU0SCak9vqPHPjb3DsQwGxBV49yxV2KppT/Hn0n7ogft\ntZdYwqWUfipsYQctKEsRJcRbtu/52xdgBRe3kw93HQC7By6/Gll03vLfAoGAcqQB\ncDDi1zfGjglKSUtdhw2qURhwMcBn9/PdcQruGXjbGVfvSk6ZBmSem8JNhaOoGrSt\nNQp48Br4z8TMLQVs1ZDD0l8KHmN315VVkr6cW40nyAfWtTtz6mKZyibU4eNUMwOf\nd7yZAzjWqdxh0NrAVladrPIpsC9a3aXOJA8rkJkCgYEAuHqdxc73UOtEzIVgjAZs\nSTSMux7S/6YJvwSDLjbNHM6hsSzUiBuFnzFLRxQALUXIEI3x7cp3LEXWflCQZYzT\nXCmO75DVY1flR2fVQPbTfMczD9jamEI2eCQq6Zhocmc3lK25Rv8H3fNTYX6bFhkc\nn0JaEBirBMOWjJEiARplJz8=\n-----END PRIVATE KEY-----\n",
+  "client_email": "chatbot-uniforms@just-sunrise-399716.iam.gserviceaccount.com",
+  "client_id": "111459921754743544274",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/chatbot-uniforms%40just-sunrise-399716.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
