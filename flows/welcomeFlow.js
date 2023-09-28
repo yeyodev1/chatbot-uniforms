@@ -1,4 +1,4 @@
-const { addKeyword, EVENTS } = require('@bot-whatsapp/bot');
+const { addKeyword} = require('@bot-whatsapp/bot');
 const flowWhatInstitution= require ('./answerFlow')
 const flowShowUniforms= require ('./answerFlow')
 

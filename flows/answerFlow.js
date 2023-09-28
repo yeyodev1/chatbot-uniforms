@@ -1,13 +1,14 @@
 const { addKeyword, EVENTS } = require("@bot-whatsapp/bot");
 
+const { getDay } = require("date-fns");
+
 const GoogleSheetService = require("../services/sheets");
+const buyItem = require("./customerFlow");
+const flowWelcome = require("./welcomeFlow");
 
 const googleSheet = new GoogleSheetService(
   "1qzZWNa0mh-jnuOptoUWPN8DgE50smFEndvrt_a1mpQ4"
 );
-
-const buyItem = addKeyword(EVENTS.ACTION).addAnswer('Yeyo es gay')
-
 
 const flowShowUniforms = addKeyword("1")
   .addAnswer("Te envío el catalogo")
@@ -18,7 +19,7 @@ const flowShowUniforms = addKeyword("1")
   .addAnswer(
     ["Por favor proporciona el codigo al lado del nombre de la prenda"],
     { capture: true },
-    async (ctx, { fallBack, flowDynamic }) => {
+    async (ctx, {state, fallBack, flowDynamic }) => {
       const formatCode = /^[A-Za-z]-\d+$/;
       const targetCode = ctx.body;
       if (!formatCode.test(targetCode)) {
@@ -29,7 +30,9 @@ const flowShowUniforms = addKeyword("1")
       }
       try {
         const getProduct = await googleSheet.showUniformData(targetCode);
-        console.log(getProduct);
+        console.log("Aqui esta el getProduct", getProduct.CODE.formattedValue)
+        state.update({productCode: getProduct.CODE.formattedValue})
+        console.log(state.getMyState())
         if (getProduct === null) {
           fallBack();
         }
@@ -47,15 +50,15 @@ const flowShowUniforms = addKeyword("1")
   .addAnswer(
     "¿Deseas ordenar? *SI* para continuar, *NO* para menu principal",
     { capture: true },
-    async (ctx, { gotoFlow, endFlow }) => {
+    async (ctx, {gotoFlow}) => {
       if (["si", "SI", "sí", "sI", "Si"].includes(ctx.body)) {
         gotoFlow(buyItem);
       }
       if (["no", "NO", "nO", "n0", "No" ].includes(ctx.body)) {
-        endFlow("Nos vemos");
+        console.log('Entre en donde no deberia entrar...')
+        gotoFlow(flowWelcome);
       }
     },
-    [buyItem]
   );
 
 module.exports = flowShowUniforms; 

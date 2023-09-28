@@ -71,20 +71,28 @@ class GoogleSheetService {
 	}
 
 	// Guardar pedido
-	async saveOrder(data) {
-		await this.doc.loadInfo();
-		const sheet = this.doc.sheetsByIndex[1]; // the first sheet
-
-		const order = await sheet.addRow({
-			fecha: data.fecha,
-			telefono: data.telefono,
-			nombre: data.nombre,
-			pedido: data.pedido,
-			observaciones: data.observaciones,
-		});
-
-		return order;
-	}
+  async saveOrder(data) {
+    await this.doc.loadInfo();
+    const sheet = this.doc.sheetsByIndex[0];
+    console.log(sheet.title);
+    try {
+      const order = await sheet.addRow({
+        Fecha: data.date,
+        'Codigo del pedido': data.productCode,
+				Nombre: data.name,
+        Delivery: data.delivery,
+				Ciudad: data.city,
+        Direccion: data.direction,
+        Numero: data.clientNumber,
+        Observaciones: data.observation,
+      });
+      console.log("este es el order", order);
+      return order;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
+
 
 module.exports = GoogleSheetService;
