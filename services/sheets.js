@@ -49,13 +49,13 @@ class GoogleSheetService {
 					);
 					if (String(numberCodeCell.value) === String(targetCode)) {
 						const item = {
-							"NOMBRE DEL PRODUCTO": sheet.getCell(rowIndex, 0)
+							NAME: sheet.getCell(rowIndex, 0)
 								.value,
-							CODIGO: numberCodeCell,
-							CATEGORIA: sheet.getCell(rowIndex, 2).value,
-							CANTIDAD: sheet.getCell(rowIndex, 3).value,
-							PRECIO: sheet.getCell(rowIndex, 4).value,
-							TALLAS: sheet.getCell(rowIndex, 5).value,
+							CODE: numberCodeCell,
+							CATEGORY: sheet.getCell(rowIndex, 2).value,
+							STOCK: sheet.getCell(rowIndex, 3).value,
+							PRICE: sheet.getCell(rowIndex, 4).value,
+							SIZE: sheet.getCell(rowIndex, 5).value,
 						};
 						console.log("Item encontrado:", item);
 						return item;

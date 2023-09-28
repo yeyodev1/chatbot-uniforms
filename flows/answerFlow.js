@@ -6,6 +6,9 @@ const googleSheet = new GoogleSheetService(
   "1qzZWNa0mh-jnuOptoUWPN8DgE50smFEndvrt_a1mpQ4"
 );
 
+const buyItem = addKeyword("SI").addAnswer('Yeyo es gay')
+const buyItem2 = addKeyword("NO").addAnswer('Yeyo es super gay')
+
 const flowShowUniforms = addKeyword("1")
 	.addAnswer("Te envío el catalogo")
 	.addAnswer("Mira lo siguiente", {
@@ -14,7 +17,7 @@ const flowShowUniforms = addKeyword("1")
 	.addAnswer(
 		["Por favor proporciona el codigo al lado del nombre de la prenda"],
 		{ capture: true },
-		async (ctx, { fallBack }) => {
+		async (ctx, { fallBack, flowDynamic }) => {
 			const formatCode = /^[A-Za-z]-\d+$/;
 			const targetCode = ctx.body;
 			if (!formatCode.test(targetCode)) {
@@ -31,12 +34,13 @@ const flowShowUniforms = addKeyword("1")
 				if (getProduct === null) {
 					fallBack();
 				}
-				return getProduct;
+        flowDynamic([`¡Excelente 😆! Estos son los detalles de tu pedido...`, `Nombre: ${getProduct.NAME}`, `Categoría: ${getProduct.CATEGORY}`, `Precio: ${getProduct.PRICE}`])
 			} catch (error) {
 				console.log(error);
 			}
-		}
-	);
+		},
+	)
+	.addAnswer('¿Deseas ordenar?', {capture: true}, null, [buyItem, buyItem2])
 
 
 module.exports = flowShowUniforms 
