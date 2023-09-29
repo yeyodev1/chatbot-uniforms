@@ -1,8 +1,8 @@
-const { addKeyword, EVENTS } = require('@bot-whatsapp/bot');
+const { addKeyword} = require('@bot-whatsapp/bot');
 const flowWhatInstitution= require ('./answerFlow')
 const flowShowUniforms= require ('./answerFlow')
 
-const flowWelcome = addKeyword('soy Diego')
+const flowWelcome = addKeyword('Diego')
   .addAnswer([
     "¡Hola! Bienvenido al servicio de atención al cliente de uniformes",
     "Seré tu asistente virtual y estoy aquí para ayudarte. ¿En qué te puedo asistir hoy?",
