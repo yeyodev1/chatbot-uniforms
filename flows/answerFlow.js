@@ -61,4 +61,41 @@ const flowShowUniforms = addKeyword("1")
     },
   );
 
-module.exports = flowShowUniforms; 
+  const flowContactAgent = addKeyword("2", { sensitive: true })
+  .addAnswer(
+    "Un gusto darte el contacto de quien te atendera!",
+    null,
+    async (ctx, { provider }) => {
+      // send a contact!
+      const vcard =
+        "BEGIN:VCARD\n" + // metadata of the contact card
+        "VERSION:3.0\n" +
+        "FN:Yeyo Reyes\n" + // full name
+        "ORG:Programador de la Muerte;\n" + // the organization of the contact
+        "TEL;type=CELL;type=VOICE;waid=593995254965:+593995254965\n" + // WhatsApp ID + phone number
+        "END:VCARD";
+
+      const id = ctx.key.remoteJid;
+      const sock = await provider.getInstance();
+
+      const sentMsg = await sock.sendMessage(id, {
+        contacts: {
+          displayName: "Yeyo",
+          contacts: [{ vcard }],
+        },
+      });
+    }
+  )
+
+  .addAnswer(
+    [
+      "Me encanto haberte ayudado!",
+      "Escribe cualquier palabra para volver a ver al menu principal! 🥳",
+    ],
+    { delay: 500 },
+    async (_, { endFlow }) => {
+      endFlow();
+    }
+  );
+
+module.exports = {flowShowUniforms, flowContactAgent}; 

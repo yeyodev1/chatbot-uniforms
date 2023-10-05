@@ -1,6 +1,5 @@
 const { addKeyword} = require('@bot-whatsapp/bot');
-const flowWhatInstitution= require ('./answerFlow')
-const flowShowUniforms= require ('./answerFlow')
+const {flowContactAgent, flowShowUniforms}= require ('./answerFlow')
 
 const flowWelcome = addKeyword('Diego')
   .addAnswer([
@@ -24,7 +23,7 @@ const flowWelcome = addKeyword('Diego')
         return fallBack("Whoops! no me has dado un numero que pertenezca a la lista! 😫");
       } 
     }, 
-    [flowShowUniforms, flowWhatInstitution]
+    [flowShowUniforms, flowContactAgent]
   )
 
 module.exports = flowWelcome;
