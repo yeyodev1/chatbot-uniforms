@@ -26,7 +26,7 @@ class GoogleSheetService {
 		try {
 			await this.doc.loadInfo();
 			const sheetIndices = [
-				0, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
+				1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18
 			];
 			for (const sheetIndex of sheetIndices) {
 				const sheet = this.doc.sheetsByIndex[sheetIndex];
@@ -81,6 +81,7 @@ class GoogleSheetService {
         'Codigo del pedido': data.productCode,
 				Nombre: data.name,
         Delivery: data.delivery,
+				Talla: data.size,
 				Ciudad: data.city,
         Direccion: data.direction,
         Numero: data.clientNumber,

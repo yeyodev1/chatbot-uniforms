@@ -59,12 +59,20 @@ const buyItem = addKeyword(EVENTS.ACTION, { delay: 700 })
     }
   )
   .addAnswer(
+    "¿De qué talla deseas tu pedido?",
+    { capture: true },
+    async (ctx, { state }) => {
+      state.update({ size: ctx.body });
+    }
+  )
+  .addAnswer(
     "¿Alguna observación sobre este pedido?",
     { capture: true },
     async (ctx, { state }) => {
       state.update({ observation: ctx.body });
     }
   )
+  
   .addAnswer(
     "Estamos guardando los detalles de tu pedido... por favor espera",
     null,
@@ -87,6 +95,7 @@ const buyItem = addKeyword(EVENTS.ACTION, { delay: 700 })
           delivery: currentState.delivery,
           name: currentState.name,
           lastname: currentState.lastname,
+          size: currentState.size,
           direction: currentState.direction,
           city: currentState.city,
           clientNumber: currentState.clientNumber,
