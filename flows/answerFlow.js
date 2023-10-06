@@ -20,7 +20,7 @@ const flowShowUniforms = addKeyword("1")
     ["Por favor proporciona el codigo al lado del nombre de la prenda"],
     { capture: true },
     async (ctx, {state, fallBack, flowDynamic }) => {
-      const formatCode = /^[A-Za-z]-\d+$/;
+      const formatCode = /^[A-Z]-\d+$/;
       const targetCode = ctx.body;
       if (!formatCode.test(targetCode)) {
         fallBack(
